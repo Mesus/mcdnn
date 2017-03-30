@@ -1,0 +1,42 @@
+package uw.syhan.mcdnn;
+
+enum RequestType {
+    FACE = 1;
+    OBJECT = 2;
+};
+
+message SpecializedParameter
+{
+    optional float accuracy = 1;
+    optional float percent = 2;
+    optional int32 number = 3;
+}
+
+message ModelParameter
+{
+    optional string name = 1;
+    required RequestType type = 2;
+    optional string compute = 3;
+    optional string memory = 4;
+    optional float loading_latency = 5;
+    optional float accuracy = 6;
+    optional float compute_latency = 7;
+    optional float compute_energy = 8;
+    optional float s_compute_latency = 9;
+    optional float s_loading_latency = 10;
+    optional float loading_energy = 11;
+    optional float sp_loading_energy = 12;
+    optional float sp_compute_energy = 13;
+    optional float sp_loading_latency = 14;
+    optional float sp_compute_latency = 15;
+    optional float sp_s_loading_latency = 16;
+    optional float sp_s_compute_latency = 17;
+    optional int32 location = 18;
+    repeated SpecializedParameter special = 19;
+}
+
+message ApplicationModel
+{
+    optional string name = 1;
+    repeated ModelParameter models = 2;
+}
